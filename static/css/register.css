@@ -1,0 +1,128 @@
+body,
+html {
+    background-color: #c5dcc2;
+    font-family: "Lexend Deca", sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.square {
+    width: 60vh;
+    height: 80vh;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    color: #186865;
+    padding-top: 30px;
+}
+
+.elevateme {
+    margin: 0 0 40px 0;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.createaccount {
+    width: 100%;
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 50px;
+}
+
+.fillinput {
+    font-size: 10px;
+    margin-bottom: 10px;
+    color: #035082;
+    width: 100%;
+    text-align: left;
+    margin-left: 55px;
+}
+
+.username,
+.password,
+.email,
+.confirmpassword {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center form elements */
+    margin-bottom: 10px;
+    width: 100%;
+    color: black;
+    border-radius: 15px;
+}
+
+.username input,
+.password input,
+.email input,
+.confirmpassword input {
+    width: 350px;
+    height: 48px;
+    border-radius: 25px;
+    border: 1px solid #5287a9;
+    text-indent: 15px;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0px;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: #186f65;
+    border: 1px solid #186f65;
+    color: white;
+    font-weight: bold;
+    margin: 20px 0 0 auto; /* Adjust margin for better spacing */
+}
+
+.next input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 40px;
+    border-radius: 30px;
+    background-color: #186f65;
+    border: 1px solid #186f65;
+    color: white;
+    font-weight: bold;
+    margin: 20px 0 0 auto; /* Adjust margin for better spacing */
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}

@@ -1,0 +1,100 @@
+.container {
+    display: flex;
+    flex-direction: horizontal;
+    align-items: baseline;
+    justify-content: baseline;
+    height: 20vh;
+    text-align: center;
+}
+body,
+html {
+    background-color: #ffffff;
+    font-family: "Lexend Deca", sans-serif;
+}
+.elevateme {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 50px auto 70px 70px;
+    color: #448a81;
+}
+
+.button-clicked {
+    width: 100px;
+    height: 40px;
+    border-radius: 25px;
+    border: 0;
+    background-color: #448a81;
+    color: #ffffff;
+    margin: 0 50px 0 0;
+}
+.button1 {
+    width: 100px;
+    height: 40px;
+    border-radius: 25px;
+    border: 0;
+    background-color: #ffffff;
+    color: black;
+    margin: 0 50px 0 0;
+}
+
+.psg {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 50px auto 0 120px;
+    color: #448a81;
+}
+.generator {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 auto 100px 120px;
+    color: #448a81;
+}
+
+.specify-text1,
+.specify-text2,
+.specify-text3 {
+    margin: 0 auto 0 120px;
+}
+
+.generate-button {
+    width: 150px;
+    height: 50px;
+    margin: 100px auto 0 120px;
+    color: #ffffff;
+    border-radius: 25px;
+    border: 2px;
+    background-color: #448a81;
+}
+
+/* For screens smaller than 768px */
+@media (max-width: 1000px) {
+    .container {
+        flex-direction: column;
+        height: auto; /* Adjust height as needed */
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .psg,
+    .generator,
+    .specify-text1,
+    .specify-text2,
+    .specify-text3,
+    .generate-button {
+        margin: 10px auto;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .generate-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+}

@@ -1,0 +1,542 @@
+h1 {
+    text-align: left;
+    margin-left: 80px; 
+    font-size: 25px;
+    color: #186f65;
+}
+
+p{
+    margin-left: 150px;
+    margin-right: 300px;
+}
+
+
+
+.button-section{
+
+    float: right;
+    margin-right: 150px;
+    justify-content: right;
+    color:#186f65;
+    
+}
+label {
+    display: inline-block;
+    width: 20px;
+    height: 20px; 
+    border-radius: 50%;
+    background-color: #ccc;
+    text-align: center;
+    line-height: 20px; 
+    cursor: pointer;
+}
+
+
+
+.selectedProbStatement-container, .potentialProblem-container {
+    background-color: #ffffff; 
+    border-radius: 15px; 
+    padding: 20px; 
+    margin: 20px auto; 
+
+    max-height: 400px; 
+    max-width: 1700px; 
+    overflow-y: auto;
+    
+    
+    margin-left: 150px;
+    margin-right: 150px;
+}
+ .generatedWhys-container, .generatedHMW-container {
+    background-color: #ffffff; 
+    border-radius: 15px; 
+    padding: 20px; 
+    margin: 20px auto; 
+
+    max-height: 400px; 
+    max-width: 1700px; 
+    overflow-y: auto;
+    
+   
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.checkbox {
+    flex-shrink: 0;
+    margin-right: 10px; 
+    width: 20px;
+    height: 20px; 
+    -webkit-appearance: none; 
+    appearance: none; 
+    border-radius: 50%;
+    border: 2px solid #186f65; 
+    position: relative;
+    cursor: pointer;
+}
+
+
+.checkbox:checked {
+    background-color: #186f65; 
+    border-color: #186f65; 
+}
+.checkbox::before {
+    content: "\2714"; 
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 20px; 
+    color: #fff; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0; 
+    transition: opacity 0.2s ease; 
+}
+
+
+.checkbox:checked::before {
+    opacity: 1;
+}
+
+
+.selectedPScard, .whyCards, .potentialRootcard, .hmwCards {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 8px; 
+    padding: 10px; 
+    margin-bottom: 10px; 
+}
+
+.card-text {
+    flex-grow: 1; 
+    width: 200px; 
+  
+    text-align: left;
+}
+.genHmwButton-container{
+    float: right;
+    padding-top: 20px;
+}
+.closeButton-container{
+    float: right;
+    margin-top: 130px;
+    margin-right: 30px;
+    margin-bottom:0px;
+    padding-top: 30px;
+
+
+
+}
+
+.delete-button, .edit-button{
+    margin-right: 10px;
+    background-color: #186f65; 
+    color: #ffffff; 
+    border: none;
+    border-radius: 15px; 
+    padding: 8px 15px; 
+    cursor: pointer;
+}
+.generateWhys-Button {
+    margin-right: 17px;
+    background-color: #186f65; 
+    color: #ffffff; 
+    border: none;
+    border-radius: 17px; 
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.generateHMW-Button, .generateElevatorPitch-button, .showElevator-button {
+    margin-right: 17px;
+    background-color: #186f65;
+    color: #ffffff; 
+    border: none;
+    border-radius: 17px; 
+    padding: 10px 25px; 
+    cursor: pointer;
+}
+
+
+
+.container {
+    display: flex;
+    flex-direction: horizontal;
+    align-items: baseline;
+    justify-content: baseline;
+    height: 20vh;
+    text-align: center;
+}
+
+body,
+html {
+    background-color: #ffffff;
+    font-family: "Lexend Deca", sans-serif;
+}
+
+.elevateme {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 50px auto 70px 70px;
+    color: #448a81;
+}
+
+.button-clicked {
+    width: 100px;
+    height: 40px;
+    border-radius: 25px;
+    border: 0;
+    background-color: #186f65;
+    color: #ffffff;
+    margin: 0 50px 0 0;
+}
+
+.button1 {
+    width: 100px;
+    height: 40px;
+    border-radius: 25px;
+    border: 0;
+    background-color: #ffffff;
+    color: black;
+    margin: 0 50px 0 0;
+}
+
+.psg {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 50px auto 0 120px;
+    color: #448a81;
+}
+.generator {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 0 auto 100px 120px;
+    color: #448a81;
+}
+
+.specify-text1 {
+    margin: 0 auto 0 120px;
+    max-width: 30%;
+}
+
+.generate-button {
+    width: 150px;
+    height: 50px;
+    margin: 100px auto 0 120px;
+    color: #ffffff;
+    border-radius: 25px;
+    border: 2px;
+    background-color: #448a81;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    border-radius: 15px; 
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%); 
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px; 
+    height: 350px; 
+    text-align: center;
+}
+
+.close {
+    margin-top: 0px;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
+#editCardText, #newCardText {
+    font-family: "Lexend Deca", sans-serif; 
+    width: 80%;
+    height: 80%; 
+    padding: 10px;
+    margin: 10px 0; 
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    resize: none; 
+}
+
+.confirm-add-button, .confirm-edit-button {
+    background-color: #186f65;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.confirm-add-button:hover, .confirm-edit-button:hover {
+    background-color:#5d948e;
+}
+
+
+h2 {
+    color: #186f65;
+}
+
+.popup {
+    border-radius: 20px;
+    height: auto;
+    width: 680px;
+  
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+
+
+
+
+
+@media (max-width: 1000px) {
+    .container {
+        flex-direction: column;
+        height: auto; 
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .psg,
+    .generator,
+    .specify-text1,
+    .specify-text2,
+    .specify-text3,
+    .generate-button {
+        margin: 10px auto;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .generate-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+}
+
+.elevator-table {
+    border-collapse: collapse;
+    width: 100%;
+    
+}
+
+.elevator-table th,
+.elevator-table td {
+    border: 3px solid #ffffff; 
+    padding: 12px;
+    text-align: center;
+    border-radius: 20px; /* Adjust the border-radius value for more or less curvature */
+    border-spacing: 10px;
+    font-weight: bold;
+}
+
+
+.elevator-table th {
+    background-color: #f2f2f2;
+}
+.elevator-table tr {
+    background-color: #d0cece; /* Change this to your desired background color */
+    border-radius: 10px;
+}
+
+.elevator-table td[contenteditable="true"] {
+    text-align: left;
+    background-color: #f2f2f2; /* Highlight editable cells */
+    border-radius: 15px; /* Add border-radius to editable cells */
+    color: #000000;
+}
+
+.popup-container {
+    display: none;
+    position: fixed;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px; /* Adjust the border-radius value for more or less curvature */
+    resize: vertical;
+
+}
+
+#closeButton, #saveButton {
+    float: right;
+    margin-top: 10px; /* Adjust the margin-top value */
+}
+.popup-container h1{
+    text-align: center;
+    margin: 0 0 5px 0 ;
+}
+.elevator-table div[contenteditable="true"] {
+    text-align: left;
+    background-color: #f2f2f2;
+    border-radius: 15px; 
+    color: #3e3e3e;
+}
+.elevator-table td:first-child {
+    background-color: #d0cece;
+  
+}
+.elevator-table td:nth-child(2) {
+    text-align: left;
+    background-color: #f2f2f2; 
+    border-radius: 15px; 
+    color: #3e3e3e;
+}
+.showHistory-button {
+    margin-right: 17px;
+    background-color: #186f65;
+    color: #ffffff;
+    border: none;
+    border-radius: 17px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#showHistoryWhys {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+}
+
+#showHistoryWhys p {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+.popup p {
+    font-family: "Lexend Deca", sans-serif;
+    font-size: 11px;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: rgba(0, 0, 0, 0.7);
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    margin-left: 30px;
+    margin-right: 5px;
+    width: 90%;
+    
+    resize: none;
+
+}
+#showHistoryWhys .selectedProbStatement,
+#showHistoryWhys .vennSettings {
+    margin-bottom: 20px;
+}
+.whyHistory {
+    position: absolute;
+    top: 68px;
+    left: 55%;
+    right: 50px;
+   
+} 
+.whyHistory button{
+  right: 5px;
+}
+.button-input {
+    margin-right: -30px;
+    margin-top: 80px;
+    background-color: #186f65;
+    color: #ffffff;
+    border: none;
+    border-radius: 25px;
+    padding: 8px 15px;
+    width: 80px;
+    height: 40px;
+    cursor: pointer;
+    float: right;
+}
+
+.popup h2{
+    font-size: 20px;
+  }
+  .popup h1{
+    text-align: center;
+    margin-right: 90px;
+  }
+
+  #showHistoryWhys .whyHistory p {
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    resize: none;
+}
+#selectedField1{
+    max-width: 300px;
+    max-height: 500px
+}

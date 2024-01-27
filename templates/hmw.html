@@ -1,0 +1,161 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="/static/css/hmw.css" />
+    <title>ElevateMe</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var contentEditableDivs = document.querySelectorAll('div[contenteditable="true"]');
+
+            contentEditableDivs.forEach(function (div) {
+                div.addEventListener('input', function () {
+                    var newValue = div.innerText.trim();
+
+                    var hiddenInput = div.previousElementSibling;
+                    hiddenInput.value = newValue;
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+<div class="container">
+    <div class="elevateme">ElevateMe</div>
+    <div class="buttons">
+        <a href="{% url 'homepage:home' %}"><input class="button1" type="button" value="Home" /></a>
+        <a href="{% url 'Saving:savePage' %}"><input class="button1" type="button" value="Saved" /></a>
+        <a href="{% url 'Ranking:ranking' %}"><input class="button1" type="button" value="Ranking" /></a>
+        <a href="{% url 'Whys:5-whys' %}"><input class="button1" type="button" value="5-Why's" /></a>
+        <a href="{% url 'HMW:HMW' %}"><input class="button-clicked" type="button" value="5-HMW" /></a>
+        <a href="{% url 'authenticate:signout' %}"><input class="button1" type="button" value="Sign Out" /></a>
+    </div>
+</div>
+
+
+<div class="problem">
+    <h1>Potential Root Problem</h1>
+    <p>The selected <strong>WHYS</strong> will serve as the potential root problem that the how-might-we statements will be generated from.</p>
+    <div class="potentialProblem-container">
+        {% if context is not None %}
+            <div class="potentialRootcard">
+                <div class="card-text" >{{ context }}</div>
+                <button class="showHistory-button" data-context="{{ whysHistory }}">Show</button>
+            </div>
+
+            <div class="genHmwButton-container">
+                <button class="generateWhys-Button" data-context="{{ context }}"> 5-HMW</button> <!-- Generate 5 HMW Statement Button -->
+            </div>
+        {% else %}
+            <div class="potentialRootcard">
+                <div class="card-text" >Generated Root Problem Statement Based on Whys</div>
+            </div>
+        {% endif %}
+    </div>
+    <div id="showHistoryWhys" class="popup">
+    </div>
+    <div class="generatedWhys">
+        <h1>Generated 5 HMW Statement</h1>
+        <p>Generated 5-HMWs statements from the potential root problem. </p>
+        <div class="generatedHMW-container">
+            <div class="hmwCards" id="hmwID">
+            </div>
+            <div class="genHmwButton-container">
+            </div>
+        </div>
+
+    </div>
+    <!-- Popup container with table -->
+    <div id="popupContainer" class="popup-container">
+        <form method="post" action="{% url 'HMW:update-elevator-pitch' %}">
+            {% csrf_token %}
+            <table class="elevator-table">
+                <h1>Elevator Pitch</h1>
+                <tr>
+                    <td><strong>FOR</strong></td>
+                    <td class="first-col">
+                        <input type="hidden" value="{{ elevator_pitch.0 }}" name="elevator_content"/>
+                        <div contenteditable="true">
+                            {{ elevator_pitch.0 }}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>WHO</strong></td>
+                    <td class="first-col">
+                        <input type="hidden" value="{{ elevator_pitch.1 }}" name="elevator_content"/>
+                        <div contenteditable="true">
+                            {{ elevator_pitch.1 }}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>WE PROVIDE</strong></td>
+                    <td class="first-col">
+                        <input type="hidden" value="{{ elevator_pitch.2 }}" name="elevator_content"/>
+                        <div contenteditable="true">
+                            {{ elevator_pitch.2 }}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>THAT</strong></td>
+                    <td class="first-col">
+                        <input type="hidden" value="{{ elevator_pitch.3 }}" name="elevator_content"/>
+                        <div contenteditable="true">
+                            {{ elevator_pitch.3 }}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>UNLIKE</strong></td>
+                    <td class="first-col">
+                        <input type="hidden" value="{{ elevator_pitch.4 }}" name="elevator_content"/>
+                        <div contenteditable="true">
+                            {{ elevator_pitch.4 }}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>WHO</strong></td>
+                    <td class="first-col">
+                        <input type="hidden" value="{{ elevator_pitch.5 }}" name="elevator_content"/>
+                        <div contenteditable="true">
+                            {{ elevator_pitch.5 }}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>OUR SOLUTION</strong></td>
+                    <td class="first-col">
+                        <input type="hidden" value="{{ elevator_pitch.6 }}" name="elevator_content"/>
+                        <div contenteditable="true">
+                            {{ elevator_pitch.6 }}
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>THAT</strong></td>
+                    <td class="first-col">
+                        <input type="hidden" value="{{ elevator_pitch.7 }}" name="elevator_content"/>
+                        <div contenteditable="true">
+                            {{ elevator_pitch.7 }}
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <button class="generateHMW-Button" id="saveButton" >Save</button>
+        </form>
+        <button class="generateHMW-Button" id="closeButton" >Close</button>
+    </div>
+    <script src="{% static 'script/hmw.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Create Account</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/register.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div class="container">
+    <div class="square">
+
+        <div class="elevateme">ElevateMe</div>
+        <div class="createaccount">Create Account</div>
+        <div class="fillinput">Please fill the inputs below</div>
+        <div class="form">
+            <form method="post" action="{% url 'authenticate:register' %}" >
+                {% csrf_token %}
+                <div class="username">
+                    {{ form.username }}
+                    <label for="{{ form.username.id_for_label }}"></label>
+                    <span class="error-message">{{ form.username.errors }}</span>
+                </div>
+
+                <div class="email">
+                    {{ form.email }}
+                    <label for="{{ form.email.id_for_label }}"></label>
+                    <span class="error-message">{{ form.email.errors }}</span>
+                </div>
+
+                <div class="password">
+                    <label for="{{ form.password1.id_for_label }}"></label>
+                    {{ form.password1 }}
+                    <span class="error-message">{{ form.password1.errors }}</span>
+                </div>
+
+                <div class="confirmpassword">
+                    <label for="{{ form.password2.id_for_label }}"></label>
+                    {{ form.password2 }}
+                    <span class="error-message">{{ form.password2.errors }}</span>
+                </div>
+
+                <button type="submit" class="next">Next</button>
+
+            </form>
+        </div>
+
+    </div>
+</div>
+</body>
+
+</html>

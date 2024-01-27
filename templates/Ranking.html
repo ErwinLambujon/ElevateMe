@@ -1,0 +1,176 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/css/Ranking.css" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>ElevateMe</title>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="elevateme">ElevateMe</div>
+
+        <div class="buttons">
+            <a href="{% url 'homepage:home' %} "><input class="button1" type="button" value="Home" /></a>
+            <a href="{% url 'Saving:savePage' %}"><input class="button1" type="button" value="Saved" /></a>
+            <a href="{% url 'Ranking:ranking' %}"><input class="button-clicked" type="button" value="Ranking" /></a>
+            <a href="{% url 'Whys:5-whys' %}"><input class="button1" type="button" value="5-Whys" /></a>
+            <a href="{% url 'HMW:HMW' %}"><input class="button1" type="button" value="5-HMW" /></a>
+            <a href="{% url 'authenticate:signout' %}"><input class="button1" type="button" value="Sign Out" /></a>
+        </div>
+    </div>
+
+    <div class="problemStatementList">
+        <h1>Problem Statement List </h1>
+
+        <div class="rbuttons">
+
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+
+            <input type="radio" name="radioGroup" id="radio2" value="2"
+                {% if ranking_setting == 2 %} checked {% endif %}/>
+            <label class="venn2" for="radio2">2</label>
+
+            <input type="radio" name="radioGroup" id="radio3" value="3"
+                    {% if ranking_setting == 3 %} checked {% endif %}/>
+            <label class="venn3" for="radio3">3</label>
+        </div>
+
+        <div class="savedlist">
+            <div class="vennDiagram2" id="venn2">
+                <h2>2 Venn Diagram List</h2>
+                <div class="outside-container">
+                    <div class="vennDiagram2-container">
+                        <div class="cards-container" id="vennDiagram2Container">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="vennDiagram3" id="venn3">
+                <h2 >3 Venn Diagram List</h2>
+                <div class="vennDiagram3-container">
+                    <div class="cards-container" id="vennDiagram3Container">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="psRanking">
+        <div class="psText"><h1>Problem Statement Ranking</h1></div>
+        <div class="criteria">
+            <p>Impact -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The problem has a significant impact on various stakeholders, such as individuals, groups, organizations, and the environment.</p>
+            <p>Capability -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The problem solver has the ability to effectively address and solve this problem based on your skills, resources, and expertise.</p>
+            <p>Development Cost -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The potential solution is feasible to develop considering potential costs, investments, and financial resources required.</p>
+            <p>Urgency -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;It is urgent to find a solution for this problem in terms of time constraints, market demands, or immediate needs.</p>
+            <p>Innovation Opportunity -&nbsp;&nbsp;&nbsp;&nbsp;The problem has the potential to present innovative solutions or new approaches that could lead to unique outcomes or competitive advantages.</p>
+            <p>Market Size -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Potential market is large enough to make the solution a viable business.</p>
+        </div>
+
+        <table class="psRubrics">
+            <tr>
+            <th class="rub1"><p id="rub1" class="rub1">Problem Statement</p></th>
+            <th class="rub2"><p id="rub2" class="rub2">Impact</p></th>
+            <th class="rub3"><p id="rub3" class="rub3">Capability</p></th>
+            <th class="rub4"><p id="rub4" class="rub4">Dev Cost</p></th>
+            <th class="rub5"><p id="rub5" class="rub5">Urgency Of Needs</p></th>
+            <th class="rub6"><p id="rub6" class="rub6">Innovation Opportunity</p></th>
+            <th class="rub7"><p id="rub7" class="rub7">Market Size</p></th>
+            <th class="rub8"><p id="rub8" class="rub8">Total</p></th>
+            <th class="rub9"><p id="rub9" class="rub9">Rank</p></th>
+            </tr>
+        </table>
+
+            <div class="chkTable">
+                <form action="{% url 'Whys:ranked-problem-statement' '0'%}" method="post" onsubmit="return validateForm(this)" id="formID">
+                {% csrf_token %}
+                <table class="cardTable">
+                    {% for i in context.items %}
+                        <tr id="{{ i.id }}">
+                            <td>
+                                <input type="radio" class="chkbox" name="radiobutton_group" value="{{ i.statement }}" id="{{ i.id }}"
+                                {% if i.statement == root_problem %}
+                                       checked
+                                {% endif %} required />
+                            </td>
+                            <td class="ps"><p>{{ i.statement }}</p></td>
+                            <td  class="impact">
+                                <select id="impact">
+                                <option value="0" selected hidden></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select></td>
+                            <td class="capability"><select id="capability">
+                                <option value="0" selected hidden></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select></td>
+                            <td class="devcost"><select id="devcost">
+                                <option value="0" selected hidden></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select></td>
+                            <td class="needs"><select id="needs">
+                                <option value="0" selected hidden></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select></td>
+                            <td class="innovation"><select id="innovation">
+                                <option value="0" selected hidden></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select></td>
+                            <td class="marketsize"><select id="marketsize" class="marketsize">
+                                <option value="0" selected hidden></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select></td>
+                            <td class="total"><p class="total">Total</p></td>
+                            <td class="rank"><p class="rank">Rank</p></td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                    <div class="rkBUtton">
+                        <button class="rank-button"
+                                type="submit"
+                        {% if not valid %}
+                            disabled
+                                style = "background-color: #d9d9d9"
+                        {% endif %}>Next
+                        </button>
+                    </div>
+                </form>
+            </div>
+    </div>
+
+    <script src="{% static 'script/Ranking.js' %}"></script>
+</body>
+
+</html>

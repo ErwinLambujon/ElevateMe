@@ -1,0 +1,133 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token }}">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="{% static 'script/Whys.js' %}"></script>
+    <link rel="stylesheet" href="/static/css/Whys.css" />
+    <title>ElevateMe</title>
+</head>
+
+<body>
+<div class="container">
+    <div class="elevateme">ElevateMe</div>
+    <div class="buttons">
+        <a href="{% url 'homepage:home' %}"><input class="button1" type="button" value="Home" /></a>
+        <a href="{% url 'Saving:savePage' %}"><input class="button1" type="button" value="Saved" /></a>
+        <a href="{% url 'Ranking:ranking' %}"><input class="button1" type="button" value="Ranking" /></a>
+        <a href="{% url 'Whys:5-whys' %}"><input class="button-clicked" type="button" value="5-Why's" /></a>
+        <a href="{% url 'HMW:HMW' %}"><input class="button1" type="button" value="5-HMW" /></a>
+        <a href="{% url 'authenticate:signout' %}"><input class="button1" type="button" value="Sign Out" /></a>
+    </div>
+</div>
+
+
+<div class="problem">
+    <h1>Selected Problem Statement</h1>
+    <p>Now subject the selected problem statement to a 5-Why analysis. Ask "why" five times to uncover the underlying issue behind the problem.</p>
+    <div class="selectedProbStatement-container">
+        {% if rankedPS is not None %}
+            <div class="selectedPScard">
+                <input type="hidden" value="{{ rankedPS }}"/>
+                <input type="hidden" value="{{ setting }}" id="setting"/>
+                <div class="card-text" >{{ rankedPS }}</div>
+                <div class="genHmwButton-container">
+                    <button class="showHistory-button" data-context="{{ pk }}" >Show</button>
+                </div>
+                <div class="genHmwButton-container">
+                    <button class="generateWhys-Button" data-context="{{ rankedPS }}"> 5-Why</button>
+                </div>
+            </div>
+        {% else %}
+            <div class="selectedPScard">
+                <div class="card-text" >Selected Problem Statement Upon ranking.</div>
+            </div>
+        {% endif %}
+
+    </div>
+
+    <div id="showHistoryPopupVenn2" class="popup">
+        <!-- Venn Diagram 2 circle drawing -->
+        <div class="venn-diagram-container">
+            <div class="venn-circle1">
+                <span class="circle-label1" id="venn1">Label 1</span>
+            </div>
+
+            <div class="venn-circle2">
+                <span class="circle-label2" id="venn2">Label 2</span>
+            </div>
+        </div>
+        <!-- Venn Diagram Settings -->
+        <div class="vennSettings">
+            <h2>Venn Diagram Settings</h2>
+            <label for="field1">Field 1:</label>
+            <textarea id="field1" name="field1" placeholder="Input scope here..."></textarea><br>
+
+            <label for="field2">Field 2</label>
+            <textarea id="field2" name="field2" placeholder="Input scope here..."></textarea><br>
+
+            <label for="filter"> Filter: </label>
+            <textarea id="filterVenn2" name="filterVenn3" rows="3"></textarea><br>
+
+            <button class="button-input" type="button" id="close"
+                    onclick="closePopup()">Close</button>
+        </div>
+    </div>
+    <div id="showHistoryPopupVenn3" class="popup">
+        <!-- Venn Diagram 3 circle drawing -->
+        <div class="venn-diagram-container" id="venn-diagram-container3">
+            <div class="venn-circle1">
+                <span class="circle-label1" id="venn3.1">Label 1</span>
+            </div>
+
+            <div class="venn-circle2">
+                <span class="circle-label2" id="venn3.2">Label 2</span>
+            </div>
+            <div class="venn-circle3">
+                <span class="circle-label3" id="venn3.3">Label 3</span>
+            </div>
+        </div>
+
+        <!-- Venn Diagram Settings -->
+        <div class="vennSettings">
+            <h2>Venn Diagram Settings</h2>
+
+            <label for="field1">Field 1:</label>
+            <textarea id="fieldVenn3.1" name="field1" placeholder="Input scope here..."></textarea><br>
+
+            <label for="field2">Field 2</label>
+            <textarea id="fieldVenn3.2" name="field2" placeholder="Input scope here..."></textarea><br>
+
+            <label for="field3">Field 3</label>
+            <textarea id="fieldVenn3.3" name="field3" placeholder="Input scope here..."></textarea><br>
+
+            <label for="filter"> Filter: </label>
+            <textarea id="filterVenn3" name="filterVenn3" rows="3"></textarea><br>
+
+            <button class="button-input" type="button" id="close"
+                    onclick="closePopup()">Close</button>
+        </div>
+    </div>
+</div>
+<div class="generatedWhys">
+    <h1> Generated 5 - Why's</h1>
+    <p>Generated 5-Whys statements from the chosen ranked problem statement. </p>
+    <div class="generatedWhys-container">
+        <div class="whyCards" id="hmwID">
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'script/save.js' %}"></script>
+
+</body>
+
+</html>
+
+<!--   <button class="addbutton" onclick="showAddCardModal('vennDiagram2Container')">Add</button> -->

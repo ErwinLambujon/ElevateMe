@@ -1,0 +1,567 @@
+@media (max-width: 1920px) {
+    .container {
+        display: flex;
+        flex-direction: horizontal;
+        align-items: baseline;
+        justify-content: baseline;
+        height: 20vh;
+        text-align: center;
+    }
+
+    body,
+    html {
+        background-color: #ffffff;
+        font-family: "Lexend Deca", sans-serif;
+    }
+
+    #value-paragraph {
+        font-size: 50px;
+    }
+    html {
+        margin-bottom: 10px;
+    }
+
+    .elevateme {
+        font-size: 30px;
+        font-weight: bold;
+        margin: 50px auto 70px 70px;
+        color: #448a81;
+    }
+
+    .button-clicked {
+        width: 100px;
+        height: 40px;
+        border-radius: 25px;
+        border: 0;
+        background-color: #186f65;
+        color: #ffffff;
+        margin: 0 50px 0 0;
+        cursor:pointer;
+    }
+
+    .button1 {
+        width: 100px;
+        height: 40px;
+        border-radius: 25px;
+        border: 0;
+        background-color: #ffffff;
+        color: black;
+        margin: 0 50px 0 0;
+        cursor:pointer;
+    }
+
+    .psg {
+        font-size: 30px;
+        font-weight: bold;
+        margin: 50px auto 0 120px;
+        color: #448a81;
+    }
+
+    .generator {
+        font-size: 30px;
+        font-weight: bold;
+        margin: 0 auto 100px 120px;
+        color: #448a81;
+    }
+
+    .specify-text1 {
+        margin: 0 auto 0 120px;
+        max-width: 30%;
+    }
+
+    .generate-button {
+        width: 150px;
+        height: 50px;
+        margin: 100px auto 0 120px;
+        color: #ffffff;
+        border-radius: 25px;
+        border: 2px;
+        background-color: #448a81;
+        cursor:pointer;
+    }
+
+    .venn-container {
+        position: absolute;
+        top: 100px;
+        left: 1000px;
+        width: 300px;
+        height: 300px;
+    }
+
+    .filters {
+        position: absolute;
+        border-radius: 50%;
+    }
+
+    .circle1,
+    .circle2,
+    .circle3 {
+        position: absolute;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .circle1_2venn, .circle2_2venn {
+        position: absolute;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    .circle1 {
+        width: 300px; /* Adjust size as needed */
+        height: 300px; /* Adjust size as needed */
+        background-color: transparent;
+        border: 5px solid #186f65;
+        top: 100px;
+        bottom: 50px; /* Adjust position */
+        left: -300px; /* Adjust position */
+    }
+
+    .circle2 {
+        width: 300px;
+        height: 300px;
+        background-color: transparent;
+        border: 5px solid #186f65;
+        top: 100px;
+        left: -150px;
+    }
+
+    .circle1_2venn {
+        width: 300px; /* Adjust size as needed */
+        height: 300px; /* Adjust size as needed */
+        background-color: transparent;
+        border: 5px solid #186f65;
+        top: 100px;
+        bottom: 50px; /* Adjust position */
+        left: -300px; /* Adjust position */
+    }
+
+    .circle2_2venn {
+        width: 300px;
+        height: 300px;
+        background-color: transparent;
+        border: 5px solid #186f65;
+        top: 100px;
+        left: -150px;
+    }
+
+    .circle3 {
+        width: 300px;
+        height: 300px;
+        background-color: transparent;
+        border: 5px solid #186f65;
+        top: 250px;
+        left: -230px;
+    }
+
+    .venn-container textarea {
+        border: none;
+        resize: none;
+        background-color: transparent;
+        font-size: 16px;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        position: absolute;
+    }
+
+    .circle1 textarea {
+        width: calc(100% - 180px);
+        height: calc(100% - 200px);
+        top: 75px;
+        left: 20px;
+        padding: 0;
+        margin: 0;
+        vertical-align: top;
+        line-height: normal;
+        text-align: center;
+    }
+
+    .circle2 textarea {
+        width: calc(100% - 200px);
+        height: calc(100% - 180px);
+        top: 50px;
+        left: 155px;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+
+    .circle3 textarea {
+        width: calc(100% - 110px);
+        height: calc(100% - 200px);
+        top: 155px;
+        left: 50px;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+
+    .circle1_2venn textarea {
+        width: calc(100% - 180px);
+        height: calc(100% - 200px);
+        top: 75px;
+        left: 20px;
+        padding: 0;
+        margin: 0;
+        vertical-align: top;
+        line-height: normal;
+        text-align: center;
+    }
+
+    .circle2_2venn textarea {
+        width: calc(100% - 200px);
+        height: calc(100% - 180px);
+        top: 50px;
+        left: 155px;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+    }
+
+    .circle1_2venn textarea::-webkit-scrollbar, .circle2_2venn textarea::-webkit-scrollbar, .circle1 textarea::-webkit-scrollbar, .circle2 textarea::-webkit-scrollbar, .circle3 textarea::-webkit-scrollbar {
+        width: 13px;
+    }
+
+    .circle1_2venn textarea::-webkit-scrollbar-thumb, .circle2_2venn textarea::-webkit-scrollbar-thumb, .circle1 textarea::-webkit-scrollbar-thumb, .circle2 textarea::-webkit-scrollbar-thumb, .circle3 textarea::-webkit-scrollbar-thumb {
+        background-color: lightgray;
+        border-radius: 25px;
+    }
+
+    .circle1_2venn textarea::-webkit-scrollbar-track, .circle2_2venn textarea::-webkit-scrollbar-track, .circle1 textarea::-webkit-scrollbar-track, .circle2 textarea::-webkit-scrollbar-track, .circle3 textarea::-webkit-scrollbar-track {
+        background-color: white;
+    }
+
+    .circle1_2venn textarea:focus, .circle2_2venn textarea:focus, .circle1 textarea:focus, .circle2 textarea:focus, .circle3 textarea:focus {
+        outline: none;
+    }
+
+    .filters,
+    .filters-button {
+        position: absolute;
+        top: 150px;
+        left: 1100px;
+        cursor:pointer;
+    }
+
+    .filters-button {
+        position: absolute;
+        top: 215px;
+        left: 1230px;
+        width: 50px;
+        height: 40px;
+        background-image: url("/static/media/filter-setting.png");
+        border-radius: 10px;
+        cursor:pointer;
+    }
+
+    h2 {
+        color: #186f65;
+    }
+
+    .popup {
+        display: none;
+        position: absolute;
+        top: 200px;
+        left: 1300px;
+    }
+
+    .text1 {
+        position: relative;
+        left: -70px;
+    }
+
+    .venn-2 {
+        position: absolute;
+        display: flex;
+        top: 63px;
+        left: 180px;
+        width: 20px;
+        height: 40px;
+    }
+
+    .venn2-label {
+        position: absolute;
+        display: flex;
+        top: 100px;
+        left: 180px;
+    }
+
+    .venn-3 {
+        position: absolute;
+        display: flex;
+        top: 63px;
+        left: 230px;
+        width: 20px;
+        height: 40px;
+        background-color: #186f65;
+    }
+
+    .venn3-label {
+        position: absolute;
+        display: flex;
+        top: 100px;
+        left: 225px;
+    }
+
+    .text2,
+    .text3,
+    .text4,
+    .text5 {
+        position: relative;
+        left: -70px;
+    }
+
+    .f1,
+    .f2,
+    .f3 {
+        position: relative;
+        left: 50px;
+        border: 0;
+    }
+
+    .f4 {
+        position: relative;
+        width: 350px;
+        height: 100px;
+        left: -70px;
+        display: block;
+        background-color: #d9d9d9;
+        border-radius: 10px;
+        text-align: center;
+        border: 2px solid black;
+    }
+
+    .closebtn {
+        position: relative;
+        top: -10px;
+        left: -40px;
+        width: 80px;
+        height: 40px;
+        background-color: #ffffff;
+        border-radius: 25px;
+        border: 2px solid #186f65;
+        cursor:pointer;
+    }
+
+    .apply {
+        position: relative;
+        top: 30px;
+        left: 180px;
+        width: 80px;
+        height: 40px;
+        background-color: #186f65;
+        border-radius: 25px;
+        border: 2px solid #186f65;
+        color: #ffffff;
+        cursor:pointer;
+    }
+
+    .field1,
+    .field2,
+    .field3 {
+        align-items: center;
+        width: 20px;
+        max-width: 10%;
+    }
+
+    .ps-form {
+        font-size: 30px;
+        text-align: center;
+        position: relative;
+        top: 280px;
+        margin-left: 150px;
+        margin-right: 150px;
+        color: #186f65;
+        font-weight: bold;
+    }
+
+    /*.generate-form {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        top: 350px;
+        border-radius: 50px;
+        background-color: #e0f2f1;
+        text-align: justify;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 20px 20px 20px;
+        box-sizing: border-box;
+        margin-bottom: 200px;
+    }*/
+    .ps-container{
+    background-color: #e0f2f1;
+    /* Adjust background color as needed */
+    border-radius: 15px;
+    /* Adjust border-radius for curved corners */
+    padding: 20px;
+    /* Add padding for content inside the container */
+    margin: 20px auto;
+    /* Adjust top and bottom margin as needed */
+
+    max-height: 400px;
+    /* Increase the maximum height as needed */
+    max-width: 1700px;
+    /* Set a maximum width for the container */
+    overflow-y: auto;
+
+    /* Add fixed margin for left and right sides */
+    margin-left: 150px;
+    margin-right: 150px;
+        position: absolute;
+        top: 850px;
+    }
+    .card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    }
+    .card-text {
+    flex-grow: 1;
+    width: 100%;
+
+    text-align: left;
+}
+    #editCardText,
+    #newCardText {
+    font-family: "Lexend Deca", sans-serif;
+    /* Add this line to set the font */
+    width: 80%;
+    height: 80%;
+    /* Adjust height as needed */
+    padding: 10px;
+    margin: 10px 0;
+    /* Add margin to separate from the top */
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    resize: none;
+    /* Prevent resizing */
+    }
+
+    table .checkbox[disabled] {
+        opacity: 0.5; /* or any other styles to visually indicate they are disabled */
+        /* Additional styling for disabled checkboxes */
+    }
+
+    div.card-text[contenteditable="false"] {
+        background-color: black;
+        color: #888;
+    }
+
+    .Problem-Statement {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .checkbox {
+    flex-shrink: 0;
+    margin-right: 10px;
+    /* Adjust margin as needed */
+    width: 20px;
+    /* Set the width of the checkbox */
+    height: 20px;
+    /* Set the height of the checkbox */
+    -webkit-appearance: none;
+    /* Remove default styling for Webkit browsers */
+    appearance: none;
+    /* Remove default styling for modern browsers */
+    border-radius: 50%;
+    /* Make the checkbox circular */
+    border: 2px solid #186f65;
+    /* Set the default border color */
+    position: relative;
+    cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-content: center;
+}
+
+/* Style the checked state */
+.checkbox:checked {
+    background-color: #186f65;
+    /* Set the background color when selected */
+    border-color: #186f65;
+    /* Set the border color when selected */
+}
+
+/* Style the custom check mark */
+.checkbox::before {
+    content: "\2714";
+    /* Unicode check mark character */
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 20px;
+    /* Adjust line-height to vertically center the check mark */
+    color: #fff;
+    /* Set the color of the check mark */
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    /* Hide by default */
+    transition: opacity 0.2s ease;
+    /* Add a smooth transition effect */
+}
+
+/* Show the custom check mark when checked */
+.checkbox:checked::before {
+    opacity: 1;
+}
+
+    .save {
+        width: 150px;
+        height: 50px;
+        position: relative;
+        left: calc(100% - 200px);
+        border-radius: 25px;
+        border: 0;
+        background-color: #186f65;
+        font-weight: bold;
+        margin-top: 20px;
+        color: white;
+        cursor:pointer;
+    }
+}
+/* For screens smaller than 768px */
+@media (max-width: 1000px) {
+    .container {
+        flex-direction: column;
+        height: auto; /* Adjust height as needed */
+    }
+
+    .buttons {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor:pointer;
+    }
+
+    .psg,
+    .generator,
+    .specify-text1,
+    .specify-text2,
+    .specify-text3,
+    .generate-button {
+        margin: 10px auto;
+        text-align: center;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .generate-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        cursor: pointer;
+    }
+}

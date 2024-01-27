@@ -1,0 +1,273 @@
+{% load static %} 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/css/save.css" />
+    <title>ElevateMe</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="{% static 'script/save.js' %}"></script>
+    <script>
+        function updateAction(form) {
+            var radioButtons = form.querySelectorAll('input[name="radiobutton_group"]:checked');
+
+            if (radioButtons.length > 0) {
+                var checkedRadioButton = radioButtons[0];
+                var operation = checkedRadioButton.id;
+
+                form.action = '/save/' + operation + '/';
+            } else {
+                form.method = "get"
+                form.action = '{% url 'Saving:savePage' %}'
+                alert('Please select a radio button before submitting.');
+            }
+        }
+
+
+        function updateCheckboxValue(form) {
+            var cards = form.querySelectorAll('.card');
+            cards.forEach(function (card) {
+                var statement = card.querySelector('.card-text').innerText.trim();
+                var checkbox = card.querySelector('.checkbox');
+                if (checkbox) {
+                    checkbox.value = statement;
+                }
+            });
+        }
+
+        function showPopupVenn2(button) {
+            var popup = document.getElementById('showHistoryPopupVenn2');
+
+            if (popup) {
+                popup.style.display = 'block';
+
+                var buttonValue = button.value;
+
+                $.ajax({
+                    url: `/two_show_popup_venn/${buttonValue}/`,
+                    type: 'POST',  // Change to POST method
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}',  // Include the CSRF token
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+
+
+                        document.getElementById('venn1').textContent = data.field1;
+                        document.getElementById('venn2').textContent = data.field2;
+
+                        document.getElementById('field1').value = data.field1;
+                        document.getElementById('field2').value = data.field2;
+                        document.getElementById('filterVenn2').value = data.filter;
+
+                        // Update your popup or do whatever you need with the data
+                    },
+                    error: function (error) {
+                        console.error('Error fetching data:', error);
+                    }
+                });
+            } else {
+                console.error('Popup element not found');
+            }
+        }
+
+
+        function showPopupVenn3(button) {
+            var popup = document.getElementById('showHistoryPopupVenn3');
+
+            if (popup) {
+                popup.style.display = 'block';
+
+                var buttonValue = button.value;
+
+                $.ajax({
+                    url: `/three_show_popup_venn/${buttonValue}/`,
+                    type: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}',  // Include the CSRF token
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+
+                        console.log(data);
+
+                        document.getElementById('venn3.1').textContent = data.field1;
+                        document.getElementById('venn3.2').textContent = data.field2;
+                        document.getElementById('venn3.3').textContent = data.field3;
+
+                        document.getElementById('fieldVenn3.1').value = data.field1;
+                        document.getElementById('fieldVenn3.2').value = data.field2;
+                        document.getElementById('fieldVenn3.3').value = data.field3;
+                        document.getElementById('filterVenn3').value = data.filter;
+
+                    },
+                    error: function (error) {
+                        console.error('Error fetching data:', error);
+                    }
+                });
+            } else {
+                console.error('Popup element not found');
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="elevateme">ElevateMe</div>
+        <div class="buttons">
+            <a href="{% url 'homepage:home' %}"><input class="button1" type="button" value="Home" /></a>
+            <a href="{% url 'Saving:savePage' %}"><input class="button-clicked" type="button" value="Saved" /></a>
+            <a href="{% url 'Ranking:ranking' %}"><input class="button1" type="button" value="Ranking" /></a>
+            <a href="{% url 'Whys:5-whys' %}"><input class="button1" type="button" value="5-Whys" /></a>
+            <a href="{% url 'HMW:HMW' %}"><input class="button1" type="button" value="5-HMW" /></a>
+            <a href="{% url 'authenticate:signout' %}"><input class="button1" type="button" value="Sign Out" /></a>
+        </div>
+    </div>
+    <div class="savedlist">
+        <h1>Saved List</h1>
+        <div class="vennDiagram2">
+            <h2>2 Venn Diagram List</h2>
+            <div class="outside-container">
+                <div class="vennDiagram2-container">
+                    <div class="cards-container" id="vennDiagram2Container">
+                        <form action="{% url 'Saving:saveOperation' '0' %}" id="saveForm1" method="post">
+                            {% csrf_token %}
+                            {% for instance in twoPS_data %}
+                            <div class="card" id="{{ instance.id }}">
+                                <input type="radio" class="checkbox" name="radiobutton_group" id="{{ instance.id }}"
+                                    value="{{ instance.statement }}" />
+                                <div class="card-text" contenteditable="true">
+                                    {{ instance.statement }}
+                                </div>
+                                <!-- pop up show History button -->
+                                <button class="buttonTheme1" type="button" name="show-button" value="{{ instance.id }}" id="showButton1"
+                                    onclick="showPopupVenn2(this)">
+                                    show
+                                </button>
+                            </div>
+                            {% endfor %}
+                            <button class="edit-button" type="submit" name="button" value="button2.1" id="update2"
+                                onclick="updateAction(this.form); updateCheckboxValue(this.form)">
+                                Update
+                            </button>
+                            <button class="delete-button" type="submit" name="button" value="button2.2" id="delete2"
+                                onclick="updateAction(this.form)">
+                                Delete
+                            </button>
+                        </form>
+                        <div id="showHistoryPopupVenn2" class="popup">
+                            <!-- Venn Diagram 2 circle drawing -->
+                            <div class="venn-diagram-container">
+                                <div class="venn-circle1">
+                                    <span class="circle-label1" id="venn1">Label 1</span>
+                                </div>
+
+                                <div class="venn-circle2">
+                                    <span class="circle-label2" id="venn2">Label 2</span>
+                                </div>
+                            </div>
+                            <!-- Venn Diagram Settings -->
+                            <div class="vennSettings">
+                                <h2>Venn Diagram Settings</h2>
+                                <form id="popupForm1" action="{% url 'homepage:filter' '2' %}" method="post">
+                                    {% csrf_token %}
+                                    <label for="field1">Field 1:</label>
+                                    <textarea id="field1" name="field1" placeholder="Input scope here..."></textarea><br>
+
+                                    <label for="field2">Field 2</label>
+                                    <textarea id="field2" name="field2" placeholder="Input scope here..."></textarea><br>
+
+                                    <label for="filter"> Filter: </label>
+                                    <textarea id="filterVenn2" name="filter" rows="5"></textarea><br>
+
+                                    <button class="buttonTheme1" type="submit" id="inputVenn2">Input</button>
+                                    <button class="button-input" type="button" id="close"
+                                            onclick="closePopup()">Close</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="vennDiagram3">
+            <h2>3 Venn Diagram List</h2>
+            <div class="vennDiagram3-container">
+                <div class="cards-container" id="vennDiagram3Container">
+                    <form action="{% url 'Saving:saveOperation' 0 %}" id="saveForm2" method="post">
+                        {% csrf_token %}
+                        {% for instance in threePS_data %}
+                        <div class="card" id="{{ instance.id }}">
+                            <input type="radio" class="checkbox" name="radiobutton_group" id="{{ instance.id }}"
+                                value="{{ instance.statement }}" />
+                            <div class="card-text" contenteditable="true">
+                                {{ instance.statement }}
+                            </div>
+                              <!-- pop up show History button -->
+                              <button class="buttonTheme1" type="button" name="button" value="{{ instance.id }}" id="showButton2"
+                              onclick="showPopupVenn3(this)">
+                              show
+                          </button>
+                        </div>
+                        {% endfor %}
+                        <button type="submit" class="edit-button" name="button" value="button3.1" id="update2"
+                            onclick="updateAction(this.form); updateCheckboxValue(this.form)">
+                            Update
+                        </button>
+                        <button class="delete-button" type="submit" name="button" value="button3.2" id="delete2"
+                            onclick="updateAction(this.form)">
+                            Delete
+                        </button>
+                    </form>
+                    <div id="showHistoryPopupVenn3" class="popup">
+                        <!-- Venn Diagram 3 circle drawing -->
+                        <div class="venn-diagram-container" id="venn-diagram-container3">
+                            <div class="venn-circle1">
+                                <span class="circle-label1" id="venn3.1">Label 1</span>
+                            </div>
+
+                            <div class="venn-circle2">
+                                <span class="circle-label2" id="venn3.2">Label 2</span>
+                            </div>
+                            <div class="venn-circle3">
+                                <span class="circle-label3" id="venn3.3">Label 3</span>
+                            </div>
+                        </div>
+                        <!-- Venn Diagram Settings -->
+                        <div class="vennSettings">
+                            <h2>Venn Diagram Settings</h2>
+                            <form id="popupForm2" action="{% url 'homepage:filter' '3' %}" method="post">
+                                {% csrf_token %}
+                                <label for="field1">Field 1:</label>
+                                <textarea id="fieldVenn3.1" name="field1" placeholder="Input scope here..."></textarea><br>
+
+                                <label for="field2">Field 2</label>
+                                <textarea id="fieldVenn3.2" name="field2" placeholder="Input scope here..."></textarea><br>
+
+                                <label for="field3">Field 3</label>
+                                <textarea id="fieldVenn3.3" name="field3" placeholder="Input scope here..."></textarea><br>
+
+
+                                <label for="filter"> Filter: </label>
+                                <textarea id="filterVenn3" name="filterVenn3" rows="3"></textarea><br>
+
+                                <button class="buttonTheme1" type="submit" id="inputVenn3">Input</button>
+                                <button class="button-input" type="button" id="close"
+                                        onclick="closePopup()">Close</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'script/save.js' %}"></script>
+</body>
+
+</html>

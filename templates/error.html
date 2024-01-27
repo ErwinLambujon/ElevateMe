@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="/static/css/error.css" />
+        <title>Document</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var homepageButton = document.getElementById("homepage")
+
+                homepageButton.addEventListener("click", function() {
+                    window.location.href = {% url 'homepage:home' %}
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="content-container">
+                <h1>Oops! Something went wrong.</h1>
+                <p>
+                    It appears somethent went wrong. Please proceed to our
+                    homepage.
+                </p>
+                <img src="/static/media/error.svg" />
+                <button class="homepage-button" id="homepage" >Go home</button>
+            </div>
+        </div>
+    </body>
+</html>

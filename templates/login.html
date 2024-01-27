@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Login Page</title>
+        <link rel="stylesheet" type="text/css" href="../static/css/login.css" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="frame-1-bvs">
+            <div class="login-screen-mis">
+                <div class="container">
+                    <div class="square">
+                        <div class="appName">ElevateMe</div>
+                        <form
+                            action="{% url 'authenticate:login' %}"
+                            method="post"
+                        >
+                            {% csrf_token %}
+                            <div class="left-aligned">
+                                <div class="userInfo">
+                                    <label class="user" for="username"
+                                        >Username</label
+                                    >
+                                    <input
+                                        type="text"
+                                        id="username"
+                                        name="username"
+                                        placeholder="Enter your username"
+                                    />
+                                </div>
+                                <div class="userInfo">
+                                    <label class="password" for="password"
+                                        >Password</label
+                                    >
+                                    <input
+                                        type="password"
+                                        id="password"
+                                        name="password"
+                                        placeholder="Enter your password"
+                                    />
+                                </div>
+                                <div class="submit">
+                                    <div class="group">
+                                        <div class="signin">
+                                            <input
+                                                type="submit"
+                                                value="Sign in"
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="text">
+                                    <span class="text1"
+                                        >Don't have an account?</span
+                                    >
+                                    <span class="signUp"
+                                        ><a
+                                            href="{% url 'authenticate:register' %}"
+                                            >Sign Up</a
+                                        ></span
+                                    >
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

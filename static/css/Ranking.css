@@ -1,0 +1,333 @@
+.container {
+    display: flex;
+    flex-direction: horizontal;
+    align-items: baseline;
+    justify-content: baseline;
+    height: 20vh;
+    text-align: center;
+}
+
+body,
+html {
+    background-color: #ffffff;
+    font-family: "Lexend Deca", sans-serif;
+}
+
+.elevateme {
+    font-size: 30px;
+    font-weight: bold;
+    margin: 50px auto 70px 70px;
+    color: #186f65;
+}
+
+.button-clicked {
+    width: 100px;
+    height: 40px;
+    border-radius: 25px;
+    border: 0;
+    background-color: #186f65;
+    color: #ffffff;
+    margin: 0 50px 0 0;
+}
+
+.button1 {
+    width: 100px;
+    height: 40px;
+    border-radius: 25px;
+    border: 0;
+    background-color: #ffffff;
+    color: black;
+    margin: 0 50px 0 0;
+}
+
+.problemStatementList{
+    text-align: left;
+    margin-left: 80px;
+    color: #186f65;
+}
+.savedlist{
+    margin: 50px 0 0 50px;
+}
+.cards-container{
+    max-height: 100%;
+}
+.vennDiagram2-container, .vennDiagram3-container{
+        background-color: #e0f2f1; /* Adjust background color as needed */
+        border-radius: 15px; /* Adjust border-radius for curved corners */
+        padding: 20px; /* Add padding for content inside the container */
+        margin: 20px auto; /* Adjust top and bottom margin as needed */
+
+        max-height: 300px; /* Increase the maximum height as needed */
+        max-width: 1700px; /* Set a maximum width for the container */
+        overflow-y: auto;
+
+        /* Add fixed margin for left and right sides */
+}
+.rbuttons input[type="radio"] {
+        width: 1.5em;
+        height: 1.5em;
+        margin-right: 5px;
+}
+.rbuttons {
+        position: absolute;
+        top: 30%;
+        right: 5%;
+        transform: translateY(-50%);
+}
+.venn2{
+    position: absolute;
+    left: 15%;
+    top: 100%;
+}
+.venn3{
+    position: absolute;
+    left: 70%;
+    top: 100%;
+}
+.rank-button{
+    float: right;
+    width: 150px;
+    height: 50px;
+    margin: 20px 0 0 0;
+    border-radius: 25px;
+    background-color: #186f65;
+    border: 0;
+    color: white;
+}
+.button-section{
+    width: 100%;
+    float: left;
+    margin: 100px 0 0 0;
+    justify-content: right;
+    color:#186f65;
+
+}
+.checkbox {
+    flex-shrink: 0;
+    margin-right: 10px; /* Adjust margin as needed */
+    width: 20px; /* Set the width of the checkbox */
+    height: 20px; /* Set the height of the checkbox */
+    -webkit-appearance: none; /* Remove default styling for Webkit browsers */
+    appearance: none; /* Remove default styling for modern browsers */
+    border-radius: 50%; /* Make the checkbox circular */
+    border: 2px solid #186f65; /* Set the default border color */
+    position: relative;
+    cursor: pointer;
+}
+
+/* Style the checked state */
+.checkbox:checked {
+    background-color: #186f65; /* Set the background color when selected */
+    border-color: #186f65; /* Set the border color when selected */
+}
+
+/* Style the custom check mark */
+.checkbox::before {
+    content: "\2714"; /* Unicode check mark character */
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 20px; /* Adjust line-height to vertically center the check mark */
+    color: #fff; /* Set the color of the check mark */
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0; /* Hide by default */
+    transition: opacity 0.2s ease; /* Add a smooth transition effect */
+}
+
+/* Show the custom check mark when checked */
+.checkbox:checked::before {
+    opacity: 1;
+}
+.button-container{
+    flex-shrink: 0;
+}
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.card-text {
+    flex-grow: 1;
+    width: 1250px;
+    color: black;
+    text-align: left;
+}
+
+.delete-button, .add-button {
+    margin-right: 10px;
+    background-color: #186f65; /* Adjust background color as needed */
+    color: #ffffff; /* Adjust text color as needed */
+    border: none;
+    border-radius: 15px; /* Adjust border-radius for rounded corners */
+    padding: 8px 15px; /* Adjust padding as needed */
+    cursor: pointer;
+}
+.edit-button{
+    position: relative;
+    top: 50%;
+    left: calc(93% - 30px);
+}
+.psRanking{
+    width: calc(100% - 90px);
+    position: absolute;
+    top: 700px;
+    left: 90px;
+    padding: 0 0 20px 0;
+    overflow-x: auto;
+}
+p{
+    font-size: 15px;
+    font-weight: bold;
+}
+.psText{
+    color: #186f65;
+}
+.psRubrics{
+    width: max-content;
+    height: 50px;
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    margin: 40px 0 20px 0;
+}
+
+.chkTable{
+    width: max-content;
+    color:#186f65;
+}
+.cardTable{
+    width: 2935px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #e0e0e0;
+    border-radius: 25px;
+    margin-bottom: 10px;
+    background-color: #d9d9d9;
+    table-layout: fixed;
+    border-collapse: collapse;
+
+}
+.cardTable select, .cardTable p{
+    height: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    border: none; /* Remove default textarea border */
+    background-color: #d9d9d9;
+    font-weight: bold;
+}
+.cardTable select:focus{
+    outline: none;
+}
+.rub1{
+    padding: 10px 10px 10px 300px;
+}
+.rub2{
+    padding: 10px 10px 10px 215px;
+}
+.rub3{
+    padding: 10px 10px 10px 75px;
+}
+.rub4{
+    padding: 10px 10px 10px 75px;
+}
+.rub5{
+    padding: 10px 10px 10px 65px;
+}
+.rub6{
+    padding: 10px 10px 10px 35px;
+}
+.rub7{
+    padding: 10px 10px 10px 40px;
+}
+.rub8{
+    padding: 10px 10px 10px 80px;
+}
+.rub9{
+    padding: 10px 10px 10px 95px;
+}
+.impact{
+    padding: 10px 10px 10px 160px;
+}
+.capability{
+    padding: 10px 10px 10px 190px;
+}
+.devcost{
+    padding: 10px 10px 10px 200px;
+}
+.needs{
+    padding: 10px 10px 10px 220px;
+}
+.innovation{
+    padding: 10px 10px 10px 200px;
+}
+.marketsize{
+    padding: 10px 10px 10px 95px;
+}
+.total{
+    padding: 10px 10px 10px 95px;
+}
+.rank{
+    padding: 10px 10px 10px 110px;
+}
+.ps{
+    padding: 10px 10px 10px 30px;
+}
+
+.cardTable td{
+    box-sizing: border-box;
+}
+.ps{
+    width: 1000px;
+    word-wrap: break-word;
+}
+.chkbox{
+    flex-shrink: 0;
+    width: 20px; /* Set the width of the checkbox */
+    height: 20px; /* Set the height of the checkbox */
+    -webkit-appearance: none; /* Remove default styling for Webkit browsers */
+    appearance: none; /* Remove default styling for modern browsers */
+    border-radius: 50%; /* Make the checkbox circular */
+    border: 2px solid #186f65; /* Set the default border color */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0 0 0 30px;
+}
+.chkbox:checked {
+    background-color: #186f65; /* Set the background color when selected */
+    border-color: #186f65; /* Set the border color when selected */
+}
+
+/* Style the custom check mark */
+.chkbox::before {
+    content: "\2714"; /* Unicode check mark character */
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 20px; /* Adjust line-height to vertically center the check mark */
+    color: #fff; /* Set the color of the check mark */
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0; /* Hide by default */
+    transition: opacity 0.2s ease; /* Add a smooth transition effect */
+}
+
+/* Show the custom check mark when checked */
+.chkbox:checked::before {
+    opacity: 1;
+}
